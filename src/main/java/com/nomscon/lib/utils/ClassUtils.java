@@ -1,6 +1,8 @@
 package com.nomscon.lib.utils;
 
 public final class ClassUtils {
+    private ClassUtils() { /* cannot be instantiated */ }
+
     public boolean isPresent(String className) {
         try {
             Class.forName(className);

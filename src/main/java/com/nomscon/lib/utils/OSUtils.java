@@ -17,6 +17,8 @@ public final class OSUtils {
 
     private final static IOSInfo osInfoForCurrentEnvironment;
 
+    private OSUtils() { /* cannot be instantiated */ }
+
     static {
         String lowerCasedName = (osName == null) ? "" : osName.toLowerCase();
         isAIX = lowerCasedName.contains("aix");
