@@ -18,7 +18,8 @@ public class ValueNotInRangeException extends IllegalArgumentException {
      * @param rangeMax the maximum value allowed for the range
      */
     public ValueNotInRangeException(int value, int rangeMin, int rangeMax) {
-        this(value, rangeMin, rangeMax, String.format(messageFormat, value, rangeMin, rangeMax));
+        this(value, rangeMin, rangeMax
+                , String.format(messageFormat, value, rangeMin, rangeMax));
     }
 
     public ValueNotInRangeException(int value, int rangeMin, int rangeMax, String message) {
