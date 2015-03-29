@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.nomscon</groupId>
     <artifactId>nomscon-java-lib</artifactId>
-    <version>0.1.0-beta</version>
+    <version>0.1.0-prerelease</version>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
