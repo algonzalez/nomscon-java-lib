@@ -2,6 +2,7 @@ package com.nomscon.lib;
 
 import com.nomscon.lib.exceptions.ValueNotInDateRangeException;
 import com.nomscon.lib.exceptions.ValueNotInRangeException;
+import com.nomscon.lib.utils.IntUtils;
 import java.util.Collection;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -73,6 +74,18 @@ public final class Arg {
 
         if (value < rangeMin || value > rangeMax)
             throw new ValueNotInRangeException(value, rangeMin, rangeMax);
+    }
+
+    public static void checkIsEven(int value) {
+        if (!IntUtils.isEven(value)) {
+            throw new IllegalArgumentException("Value must be an even number.");
+        }
+    }
+
+    public static void checkIsOdd(int value) {
+        if (!IntUtils.isEven(value)) {
+            throw new IllegalArgumentException("Value must be an odd number.");
+        }
     }
 
     public static void checkIsAMatch(String text, Pattern pattern) {
