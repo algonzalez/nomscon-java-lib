@@ -2,7 +2,7 @@ package com.nomscon.lib.utils;
 
 import java.util.Date;
 
-public class DateUtils {
+public final class DateUtils {
     private DateUtils() { /* cannot be instantiated */ }
     
     public static boolean isInRange(Date value, Date minValue, Date maxValue) {
