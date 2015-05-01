@@ -1,10 +1,13 @@
+/*
+ * This code is licensed under "The MIT License"
+ * Copyright (c) 2015 by Alberto Gonzalez
+ *
+ * Please see the included 'LICENSE.txt' file for the full text of the license.
+ */
 package com.nomscon.lib.exceptions;
 
-/**
- * 
- */
-public class ValueNotInRangeException extends IllegalArgumentException {
-    private static final String messageFormat = "value %d is not in range of %d..%d";
+public class ValueNotInRangeException extends RuntimeException {
+    private static final String messageFormat = "value %d must be in the range of %d..%d";
 
     private final int value;
     private final int rangeMin;
@@ -29,6 +32,22 @@ public class ValueNotInRangeException extends IllegalArgumentException {
         this.value = value;
         this.rangeMin = rangeMin;
         this.rangeMax = rangeMax;
+    }
+    
+    public ValueNotInRangeException(int value, int rangeMin, int rangeMax, String message, Throwable cause) {
+        super(message != null && !message.isEmpty()
+                ? message
+                : String.format(messageFormat, value, rangeMin, rangeMax), cause);
+        this.value = value;
+        this.rangeMin = rangeMin;
+        this.rangeMax = rangeMax;
+    }
+    
+    public ValueNotInRangeException(Throwable cause) {
+        super(cause);
+        this.value = 0;
+        this.rangeMin = 0;
+        this.rangeMax = 0;
     }
 
     /**
