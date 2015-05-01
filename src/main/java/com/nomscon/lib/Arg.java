@@ -1,3 +1,9 @@
+/*
+ * This code is licensed under "The MIT License"
+ * Copyright (c) 2015 by Alberto Gonzalez
+ *
+ * Please see the included 'LICENSE.txt' file for the full text of the license.
+ */
 package com.nomscon.lib;
 
 import com.nomscon.lib.exceptions.ValueNotInDateRangeException;
@@ -170,6 +176,11 @@ public final class Arg {
         if (hasOnlyWhitespaceChars)
             throw new IllegalArgumentException();
     }
+    
+    public static void checkIsNotZero(int value) {
+        if (value == 0)
+            throw new IllegalArgumentException();
+    }
 
     public static void checkIsPositive(int value) {
         if (value <= 0)
@@ -184,6 +195,11 @@ public final class Arg {
     public static void checkIsTrue(boolean condition) {
         if (!condition)
             throw new IllegalArgumentException();
+    }
+
+    public static void checkIsTrue(boolean condition, String errorMessage) {
+        if (!condition)
+            throw new IllegalArgumentException(errorMessage);
     }
 }
 
