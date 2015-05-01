@@ -1,12 +1,22 @@
+/*
+ * This code is licensed under "The MIT License"
+ * Copyright (c) 2015 by Alberto Gonzalez
+ *
+ * Please see the included 'LICENSE.txt' file for the full text of the license.
+ */
 package com.nomscon.lib;
 
-public final class TryResult<TResult> {
+public class TryResult<TResult> {
     private final boolean isSuccess;
     private final TResult resultValue;
     private final Throwable exception;
     
     public static <T> TryResult<T> asSuccess(T value) {
         return new TryResult<>(true, value, null);
+    }
+    
+    public static <T> TryResult<T> asFailure() {
+        return new TryResult<>(false, null, null);
     }
     
     public static <T> TryResult<T> asFailure(Throwable ex) {
