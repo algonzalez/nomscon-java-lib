@@ -6,7 +6,7 @@
  */
 package com.nomscon.lib.specifications;
 
-class OrNotSpec<T> extends CompositeSpec<T> {
+public class OrNotSpec<T> extends CompositeSpec<T> {
     public OrNotSpec(Spec<T> leftSpec, Spec<T> rightSpec) {
         super(leftSpec, rightSpec);
     }
