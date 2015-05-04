@@ -6,41 +6,21 @@
  */
 package com.nomscon.lib.ranges;
 
-// TODO:
+import java.time.LocalDateTime;
 
-import java.time.LocalDate;
-import java.util.Iterator;
+public class DateTimeRange extends AbstractRange<LocalDateTime> {
 
-public class DateTimeRange implements Range<LocalDate>, Iterable<LocalDate> {
-
-    @Override
-    public LocalDate getMin() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    // creates and exclusive or half-open range
+    public static DateTimeRange create(LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        return new DateTimeRange(startDateTime, endDateTime, false);
     }
 
-    @Override
-    public LocalDate getMax() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    // creates and inclusive or closed range
+    public static DateTimeRange createInclusive(LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        return new DateTimeRange(startDateTime, endDateTime, true);
     }
 
-    @Override
-    public boolean isInclusive() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private DateTimeRange(LocalDateTime minDateTime, LocalDateTime maxDateTime, boolean inclusive) {
+        super(minDateTime, maxDateTime, inclusive);
     }
-
-    @Override
-    public boolean isInRange(LocalDate value) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public long length() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public Iterator<LocalDate> iterator() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
 }

@@ -7,9 +7,8 @@
 package com.nomscon.lib.ranges;
 
 public interface Range<T> {
-    T getMin();
-    T getMax();
+    T getMinValue();
+    T getMaxValue();
     boolean isInclusive();
     boolean isInRange(T value);
-    long length(); 
 }

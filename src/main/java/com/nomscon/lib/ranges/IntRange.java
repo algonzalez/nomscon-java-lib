@@ -6,40 +6,50 @@
  */
 package com.nomscon.lib.ranges;
 
-// TODO:
-
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class IntRange implements Range<Integer>, Iterable<Integer> {
+public class IntRange extends AbstractRange<Integer> implements Iterable<Integer> {
 
-    @Override
-    public Integer getMin() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    // creates and exclusive or half-open range
+    public static IntRange create(Integer minValue, Integer maxValue) {
+        return new IntRange(minValue, maxValue, false);
+    }
+
+    // creates and inclusive or closed range
+    public static IntRange createInclusive(Integer minValue, Integer maxValue) {
+        return new IntRange(minValue, maxValue, true);
+    }
+
+    private IntRange(int minValue, int maxValue, boolean inclusive) {
+        super(minValue, maxValue, inclusive);
     }
 
     @Override
-    public Integer getMax() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public Iterator<Integer> iterator() { return new IntRangeIterator(); }
 
-    @Override
-    public boolean isInclusive() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    private class IntRangeIterator implements Iterator<Integer> {
+        private int nextValue;
+        private final int lastValue;
 
-    @Override
-    public boolean isInRange(Integer value) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+        public IntRangeIterator() {
+            nextValue = getMinValue();
+            lastValue = isInclusive() ? getMaxValue() + 1 :getMaxValue();
+        }
 
-    @Override
-    public long length() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+        @Override
+        public boolean hasNext() {
+            return nextValue < lastValue;
+        }
 
-    @Override
-    public Iterator<Integer> iterator() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        @Override
+        public Integer next() {
+            if (hasNext())
+            {
+                nextValue++;
+                return nextValue;
+            }
+            throw new NoSuchElementException();
+        }
     }
-    
 }

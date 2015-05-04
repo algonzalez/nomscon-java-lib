@@ -6,42 +6,22 @@
  */
 package com.nomscon.lib.ranges;
 
-// TOOD:
-
 import java.time.LocalTime;
-import java.util.Iterator;
 
-public class TimeRange implements Range<LocalTime>, Iterable<LocalTime> {
+public class TimeRange extends AbstractRange<LocalTime> {
 
-    @Override
-    public LocalTime getMin() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    // creates and exclusive or half-open range
+    public static TimeRange create(LocalTime startTime, LocalTime endTime) {
+        return new TimeRange(startTime, endTime, false);
     }
 
-    @Override
-    public LocalTime getMax() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    // creates and inclusive or closed range
+    public static TimeRange createInclusive(LocalTime startTime, LocalTime endTime) {
+        return new TimeRange(startTime, endTime, true);
     }
 
-    @Override
-    public boolean isInclusive() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private TimeRange(LocalTime minTime, LocalTime maxTime, boolean inclusive) {
+        super(minTime, maxTime, inclusive);
     }
-
-    @Override
-    public boolean isInRange(LocalTime value) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public long length() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public Iterator<LocalTime> iterator() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
 }
 
